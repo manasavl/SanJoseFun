@@ -1,0 +1,29 @@
+<ion-view title="Create an event" id="page6">
+  <ion-content padding="true" class="has-header">
+    <form id="createAnEvent-form3" class="list">
+      <ion-list id="createAnEvent-list4">
+        <label class="item item-input" id="createAnEvent-input6" name="eventName">
+          <input type="text" placeholder="Name of the event" ng-model="data.eventName">
+        </label>
+        <label class="item item-input" id="createAnEvent-input7" name="description">
+          <input type="text" placeholder="Description" ng-model="data.description">
+        </label>
+        <label class="item item-input" id="createAnEvent-input8" name="location">
+          <input type="text" placeholder="Location " ng-model="data.location">
+        </label>
+        <label class="item item-select" id="createAnEvent-select1" name="category">
+          <span class="input-label">Category</span>
+          <select ng-model="data.category">
+            <option>Education</option>
+            <option>Fitness</option>
+            <option>Religious</option>
+          </select>
+        </label>
+        <label class="item item-input" id="createAnEvent-input12" name="time">
+          <input type="text" placeholder="Time" ng-model="data.time">
+        </label>
+      </ion-list>
+      <button id="createAnEvent-button4" ng-click="submit()" ng-disabled="submitting" class="button button-stable button-block">Create</button>
+    </form>
+  </ion-content>
+</ion-view>
