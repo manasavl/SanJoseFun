@@ -1,5 +1,24 @@
 angular.module('app.services', [])
 
+.factory('AuthenticationService',['$http', function($http) {
+    debugger;
+    var baseurl='http://localhost:3000';
+    var service={
+        baseurl:baseurl
+    }
+    service.Login=function Login(username, password) {
+        console.log("hello from services,username"+username+",password"+password);
+        $http.post(baseurl+'/login',{
+            username:username,
+            password:password
+        })
+        .success(function(response){
+            callback(response);
+        });
+    };
+return service;
+}])
+
 .service('httpService', ['$q', '$http', function($q, $http) {
     var geturl = 'http://localhost:3000/events';
     var posturl = 'http://localhost:3000/event';
@@ -36,16 +55,6 @@ angular.module('app.services', [])
 
 .service('BlankService', [function() {
 
-}])
+}]);
 
-.factory('UserService', function($http) {
-    function getByUserName(username, password) {
-        console.log("hello from services");
-        // user.name=username;
-        // user.password=password;
-        return {
-            username: username,
-            password: password
-        };
-    }
-});
+

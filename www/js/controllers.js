@@ -1,24 +1,25 @@
 angular.module('app.controllers', [])
 
-.controller('loginCtrl', ['$scope', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope', '$state','AuthenticationService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $state) {
+    function($scope, $state,AuthenticationService) {
         console.log("hit the controller");
-        $scope.doLogin = function(login) {
+        $scope.doLogin = function() {
             // console.log($scope.email);
             // console.log($scope.password);
             var username = ($scope.email);
             var psd = ($scope.password);
             debugger;
-             if (username !== '' && psd !== '' && !(username && psd) && username !== undefined && psd !== undefined) {
-            var login=UserFactory.getByUserName(username,psd);
-            login.then(function(response){
-                $state.go('menu.viewEvents');
-            }),function(error){
-                console.log(error);
-             
-            }
+             if (username !== '' && psd !== '' && username !== undefined && psd !== undefined) {
+             AuthenticationService.Login(username, psd, function(data) {
+                    if (data.error) {
+
+                    } else {
+                        $state.go("menu.viewEvents");
+                    }
+                });
+             $state.go("menu.viewEvents");
             }
            
         }
@@ -80,10 +81,12 @@ angular.module('app.controllers', [])
     }
 ])
 
-
-
-
-
+// }]
+   
+// .controller('signupCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// // You can include any angular dependencies as parameters for this function
+// // TIP: Access Route Parameters for your page via $stateParams.parameterName
+// function ($scope, $stateParams) {
 
 .controller('createAnEventCtrl', ['$scope', '$stateParams', 'httpService', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function

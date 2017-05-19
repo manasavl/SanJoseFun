@@ -78,9 +78,16 @@ angular.module('app', ['ionic','app.routes','app.controllers', 'app.services','c
 //         event.preventDefault();
 //         event.stopPropagation();
 
+
 //       });
 //     }
 //   };
 // });
 
 // angular.module('starter', ['ionic', 'ngCordova'])
+// =======
+//       });
+//     }
+//   };
+// });
+
