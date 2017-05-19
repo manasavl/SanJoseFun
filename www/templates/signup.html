@@ -1,21 +1,21 @@
 <ion-view title="Signup" id="page5">
   <ion-content padding="true" class="has-header">
-    <form id="signup-form2" class="list">
+    <div ng-controller="signupCtrl">
       <ion-list id="signup-list3">
         <label class="item item-input" id="signup-input3">
-          <input type="text" placeholder="Enter Your Name">
+          <input type="text" placeholder="Enter Your Name" ng-model="name">
         </label>
         <label class="item item-input" id="signup-input4">
-          <input type="email" placeholder="Enter Your Email">
+          <input type="email" placeholder="Enter Your Email" ng-model="email">
         </label>
         <label class="item item-input" id="signup-input5">
-          <input type="text" placeholder="Enter your password">
+          <input type="text" placeholder="Enter your password" ng-model="psd">
         </label>
         <label class="item item-input" id="signup-input11">
-          <input type="text" placeholder="Enter the mobile number">
+          <input type="text" placeholder="Enter the mobile number" ng-model="confirmpsd">
         </label>
       </ion-list>
-      <a ui-sref="menu.login()" id="signup-button3" class="button button-assertive button-block">Sign up</a>
-    </form>
+      <input type="submit" ng-click="signup()" id="signup-button3" class="button button-assertive button-block">
+    </div>
   </ion-content>
 </ion-view>

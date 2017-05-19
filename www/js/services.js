@@ -1,10 +1,10 @@
 angular.module('app.services', [])
 
-.service('httpService', ['$q', '$http', function($q, $http){
+.service('httpService', ['$q', '$http', function($q, $http) {
     var geturl = 'http://localhost:3000/events';
     var posturl = 'http://localhost:3000/event';
     var getEvent = 'http://localhost:3000/getEvent/';
-    
+
     var ret = {
         all: function() {
             var deferred = $q.defer();
@@ -23,7 +23,7 @@ angular.module('app.services', [])
         },
         getEvent: function(data) {
             var deferred = $q.defer();
-            $http.get(getEvent+data).then(function(resp) {
+            $http.get(getEvent + data).then(function(resp) {
                 console.log(resp);
                 deferred.resolve(resp.data);
             })
@@ -34,6 +34,18 @@ angular.module('app.services', [])
     return ret;
 }])
 
-.service('BlankService', [function(){
+.service('BlankService', [function() {
 
-}]);
+}])
+
+.factory('UserService', function($http) {
+    function getByUserName(username, password) {
+        console.log("hello from services");
+        // user.name=username;
+        // user.password=password;
+        return {
+            username: username,
+            password: password
+        };
+    }
+});
