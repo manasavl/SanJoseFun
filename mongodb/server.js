@@ -7,7 +7,7 @@ var server = restify.createServer({
     name: 'san jose',
     version: '1.0.0'
 });
-var db = mongojs('sanfun', ['events']);
+var db = mongojs('sanfun', ['events', 'users']);
 restify.CORS.ALLOW_HEADERS.push('Access-Control-Allow-Origin');
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
@@ -18,10 +18,32 @@ server.listen(3000, function() {
     console.log("Server started @ 3000");
 });
 
-server.post('/login',function(req,res,next){
-    var login=req.param;
+server.post('/login', function(req, res, next) {
+    var login = req.param;
     console.log('print: %s', JSON.stringify(login));
-return next;
+    db.users.find({ email: login.email }, function(err, data) {
+            if (err) {
+                return res.send(500, err);
+            }
+            res.send(data);
+        })
+        //return next();
+});
+
+server.post('/signUp', function(req, res, next) {
+    var signupdata = req.body;
+
+    console.log('print1: %s', JSON.stringify(req));
+    db.users.save(signupdata, function(err, data, next) {
+        if (err) {
+            return res.send(500, err);
+        }
+        es.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        res.end(JSON.stringify(data));
+    })
+    return next();
 });
 
 server.get("/events", function(req, res, next) {

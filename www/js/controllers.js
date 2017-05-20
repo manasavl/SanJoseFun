@@ -1,44 +1,63 @@
 angular.module('app.controllers', [])
 
-.controller('loginCtrl', ['$scope', '$state','AuthenticationService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope', '$state', 'httpService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $state,AuthenticationService) {
+    function($scope, $state, httpService) {
         console.log("hit the controller");
         $scope.doLogin = function() {
-            // console.log($scope.email);
-            // console.log($scope.password);
-            var username = ($scope.email);
-            var psd = ($scope.password);
-            debugger;
-             if (username !== '' && psd !== '' && username !== undefined && psd !== undefined) {
-             AuthenticationService.Login(username, psd, function(data) {
-                    if (data.error) {
-
+            var useremail = $scope.email;
+            var password = $scope.password;
+            if (useremail && password) {
+                $scope.data = {
+                    email: $scope.email,
+                    password: $scope.password
+                }
+                httpService.login($scope.data).then(function(res) {
+                    console.log(res);
+                    if (res === null) {
+                        alert("Looks like you have not signup!");
                     } else {
-                        $state.go("menu.viewEvents");
+                       if(res.password === password){
+                        $state.go('menu.viewEvents');
+                    }else{
+                        var conf=confirm("looks like you forgot password! want help?");
+                        if(conf){
+                            alert("Your password is:"+res.password);
+                        }
                     }
-                });
-             $state.go("menu.viewEvents");
+                    }
+                })
+            } else {
+                alert("Sorry Please enter all the values");
             }
-           
-        }
-
+        };
     }
 ])
 
-.controller('signupCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('signupCtrl', ['$scope', '$state', 'httpService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
     // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function($scope, $state) {
+    function($scope, $state, httpService) {
         $scope.signup = function() {
-            debugger;
-            // console.log("inside sign up function");
-            $state.go('menu.viewEvents');
-        }
-
+            if ($scope.psd !== $scope.confirmpsd) {
+                alert("The password and Confirm Password are mismatch");
+            }
+            if ($scope.psd === $scope.confirmpsd) {
+                $scope.signupdata = {
+                    username: $scope.name,
+                    email: $scope.email,
+                    password: $scope.psd,
+                    mobile: $scope.mobile
+                }
+                httpService.signUp($scope.signupdata).then(function() {
+                    console.log("suucess");
+                    $state.go('menu.viewEvents');
+                })
+            }
+        };
     }
-)
+])
 
 .controller('viewEventsCtrl', ['$scope', '$stateParams', 'httpService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
@@ -82,7 +101,7 @@ angular.module('app.controllers', [])
 ])
 
 // }]
-   
+
 // .controller('signupCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // // You can include any angular dependencies as parameters for this function
 // // TIP: Access Route Parameters for your page via $stateParams.parameterName
