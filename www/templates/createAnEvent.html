@@ -1,0 +1,47 @@
+<ion-view title="Create an event" id="page6">
+  <ion-content padding="true" class="has-header">
+    <form id="createAnEvent-form3" class="list">
+      <ion-list id="createAnEvent-list4">
+        <label class="item item-input" id="createAnEvent-input6" name="eventName">
+          <span class="input-label">Event Name</span>
+          <input type="text" placeholder="Name of the event" ng-model="data.eventName">
+        </label>
+        <label class="item item-input" id="createAnEvent-input7" name="description">
+          <span class="input-label">Description</span>
+          <input type="text" placeholder="Description" ng-model="data.description">
+        </label>
+        <label class="item item-input" id="createAnEvent-input10" name="date">
+          <span class="input-label">Date</span>
+          <input type="date" placeholder="Date" ng-model="data.date">
+        </label>
+        <label class="item item-input" id="createAnEvent-input12" name="time">
+          <span class="input-label">Time </span>
+          <input type="text" placeholder="Time" ng-model="data.time">
+        </label>
+        <label class="item item-input" id="createAnEvent-input8" name="address">
+          <span class="input-label">Address</span>
+          <input type="text" placeholder="Address" ng-model="data.address">
+        </label>
+        <label class="item item-select" id="createAnEvent-select1" name="location">
+          <span class="input-label">Location</span>
+          <select ng-model="data.location">
+            <option>East SanJose</option>
+            <option>West SanJose</option>
+            <option>North SanJose</option>
+            <option>South SanJose</option>
+            <option>Downtown</option>
+          </select>
+        </label>
+        <label class="item item-select" id="createAnEvent-select2" name="category">
+          <span class="input-label">Category</span>
+          <select ng-model="data.category">
+            <option>Education</option>
+            <option>Fitness</option>
+            <option>Religious</option>
+          </select>
+        </label>
+      </ion-list>
+      <button id="createAnEvent-button4" ng-click="submit()" ng-disabled="submitting" class="button button-stable button-block">Create</button>
+    </form>
+  </ion-content>
+</ion-view>

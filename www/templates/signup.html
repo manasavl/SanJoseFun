@@ -1,0 +1,31 @@
+<ion-view title="signup" hide-nav-bar="true" hide-back-button="true" cache-view="false" nav-transition="none" id="page5">
+  <ion-content padding="false" class=" manual-remove-top-padding">
+    <form id="signup-form2" class="list">
+      <div>
+        <img src="img/4EbdMn0DSlXRzxXdhR4K_Blog_SanJose1.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+      <div id="signup-markdown2" ng-if="error" class="show-list-numbers-and-dots error-box">
+        <p style="color:#000000;">{{error}}</p>
+      </div>
+      <ion-list id="signup-list3">
+        <label class="item item-input" id="signup-input3">
+          <input type="text" placeholder="Name" ng-model="data.name">
+        </label>
+        <label class="item item-input" id="signup-input4">
+          <input type="email" placeholder="Email" ng-model="data.email">
+        </label>
+        <label class="item item-input" id="signup-input5">
+          <input type="password" placeholder="Password" ng-model="data.password">
+        </label>
+        <label class="item item-input" id="signup-input13">
+          <input type="password" placeholder="Confirm Password" ng-model="data.confirmpassword">
+        </label>
+        <label class="item item-input" id="signup-input11">
+          <input type="tel" placeholder="Mobile number" ng-model="data.mobile">
+        </label>
+      </ion-list>
+      <button id="signup-button3" ng-click="signup()" class="button button-positive button-block">Sign up</button>
+      <a ui-sref="login()" id="signup-button8" class="button button-positive button-block">Already have an account?</a>
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="Login" hide-nav-bar="true" cache-view="false" nav-transition="none" id="page4">
+  <ion-content padding="true" class=" manual-remove-top-padding">
+    <div style="margin-left: -10px; width: calc(100% + 20px);">
+      <img src="img/pYtViGZ8SEWfeoQSg98B_Blog_SanJose1.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+    </div>
+    <form id="login-form1" class="list">
+      <div id="login-markdown1" ng-if="error" class="show-list-numbers-and-dots error-box">
+        <p style="margin-top:0px;color:#000000;">{{error}}</p>
+      </div>
+      <ion-list id="login-list2">
+        <label class="item item-input top-input" id="login-input2">
+          <input type="email" placeholder="Email" ng-model="data.email">
+        </label>
+        <label class="item item-input bottom-input" id="login-input9">
+          <input type="password" placeholder="Password" ng-model="data.password">
+        </label>
+      </ion-list>
+      <button id="login-button1" ng-click="login()" class="button button-positive button-block">Log in</button>
+      <button id="login-button7" ng-click="fblogin()" class="button button-positive button-block">Facebook Login</button>
+      <a ui-sref="signup({})" id="login-button2" class="button button-assertive button-block button-clear">Or create an account</a>
+    </form>
+  </ion-content>
+</ion-view>
