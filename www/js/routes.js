@@ -102,6 +102,19 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('menu.registeredEventDetails', {
+    url: '/page9',
+	params: {
+		eventName: ""		
+},
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/registeredEventDetails.html',
+        controller: 'registeredEventDetailsCtrl'
+      }
+    }
+  })
+
   .state('menu.categoryEvents', {
     url: '/categoryEvents',
 	params: {
@@ -111,6 +124,19 @@ angular.module('app.routes', [])
       'side-menu21': {
         templateUrl: 'templates/categoryEvents.html',
         controller: 'categoryEventsCtrl'
+      }
+    }
+  })
+
+  .state('menu.locationEvents', {
+    url: '/page10',
+	params: {
+		location: ""		
+},
+    views: {
+      'side-menu21': {
+        templateUrl: 'templates/locationEvents.html',
+        controller: 'locationEventsCtrl'
       }
     }
   })

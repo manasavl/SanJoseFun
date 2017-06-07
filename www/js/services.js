@@ -1,12 +1,15 @@
 angular.module('app.services', [])
 
 .service('httpService', ['$q', '$http', function($q, $http){
-    var geturl = 'http://127.0.0.1:3000/events';
-    var posturl = 'http://127.0.0.1:3000/event';
-    var getEvent = 'http://127.0.0.1:3000/event/';
-    var getCategory = 'http://127.0.0.1:3000/category/';
-    var login = 'http://127.0.0.1:3000/login';
-    var signup = 'http://127.0.0.1:3000/signup';
+    var geturl = 'http://localhost:3000/events';
+    var posturl = 'http://localhost:3000/event';
+    var getEvent = 'http://localhost:3000/event/';
+    var getCategory = 'http://localhost:3000/category/';
+    var login = 'http://localhost:3000/login';
+    var signup = 'http://localhost:3000/signup';
+    var rsvp = 'http://localhost:3000/rsvp';
+    var rsvpEvents = 'http://localhost:3000/rsvp/';
+    var getLocation = 'http://localhost:3000/location/';
     
     var ret = {
         all: function() {
@@ -42,6 +45,15 @@ angular.module('app.services', [])
             })
             return deferred.promise;
         },
+        getLocationEvents: function(data) {
+            var deferred = $q.defer();
+            console.log("location: ", data);
+            $http.get(getLocation+data).then(function(resp) {
+                console.log(resp);
+                deferred.resolve(resp.data);
+            })
+            return deferred.promise;
+        },
         login: function(data) {
             var deferred = $q.defer();
             $http.post(login, data).then(function(resp) {
@@ -55,6 +67,23 @@ angular.module('app.services', [])
                 console.log(resp);
                 deferred.resolve(resp.data);
             });
+            return deferred.promise;
+        },
+        rsvp: function(data) {
+            var deferred = $q.defer();
+            $http.post(rsvp, data).then(function(resp) {
+                console.log(resp);
+                deferred.resolve(resp.data);
+            });
+            return deferred.promise;
+        },
+        rsvpEvents: function(data) {
+            var deferred = $q.defer();
+            console.log("user: ", data);
+            $http.get(rsvpEvents+data).then(function(resp) {
+                console.log(resp);
+                deferred.resolve(resp.data);
+            })
             return deferred.promise;
         }
     }

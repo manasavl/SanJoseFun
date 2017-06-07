@@ -1,7 +1,10 @@
 <ion-view title="Select Categories" id="page7">
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
     <ion-list id="selectCategories-list7" class="manual-list-fullwidth">
-      <ion-item id="selectCategories-list-item10" ui-sref="menu.categoryEvents({&quot;category&quot;:&quot;&quot;+category.name+&quot;&quot;})" ng-repeat="category in categories">{{category.name}}</ion-item>
+      <ion-item class="item-avatar" id="selectCategories-list-item10" ui-sref="menu.categoryEvents({&quot;category&quot;:&quot;&quot;+category.name+&quot;&quot;})" ng-repeat="category in categories">
+        <img src="img/s8xsXrBxTWKfKwwGBrPv_5d329bb8e9ba0618bced1d250cf39dd0.jpg">
+        <h2>{{category.name}}</h2>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

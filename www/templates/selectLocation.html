@@ -1,11 +1,10 @@
 <ion-view title="Select Location" id="page2">
   <ion-content padding="true" class="has-header">
-    <form id="selectLocation-form4" class="list">
-      <ion-checkbox id="selectLocation-checkbox1">Select All</ion-checkbox>
-      <ion-checkbox id="selectLocation-checkbox2">East SanJose</ion-checkbox>
-      <ion-checkbox id="selectLocation-checkbox3">West SanJose</ion-checkbox>
-      <ion-checkbox id="selectLocation-checkbox4">North SanJose</ion-checkbox>
-      <ion-checkbox id="selectLocation-checkbox5">South SanJose</ion-checkbox>
-    </form>
+    <ion-list id="selectLocation-list12">
+      <ion-item class="item-avatar" id="selectLocation-list-item22" ui-sref="menu.locationEvents({&quot;location&quot;:&quot;&quot;+location.name+&quot;&quot;})" ng-repeat="location in locations">
+        <img src="img/EH5KAOkS0KxXoWZZIGRy_location-marker-flat.png">
+        <h2>{{location.name}}</h2>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

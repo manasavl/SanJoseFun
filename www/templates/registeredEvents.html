@@ -1,3 +1,11 @@
-<ion-view title="Registered Events" id="page3">
-  <ion-content padding="true" class="has-header"></ion-content>
+<ion-view title="Registered Events" cache-view="false" nav-transition="none" id="page3">
+  <ion-content padding="true" class="has-header">
+    <ion-list id="registeredEvents-list13">
+      <ion-item class="item-avatar" id="registeredEvents-list-item23" ui-sref="menu.registeredEventDetails({&quot;eventName&quot;:&quot;&quot;+event.eventName+&quot;&quot;})" ng-repeat="event in events">
+        <img src="img/lATnKte3TFWM7VeHMuWE_events-heavenly-header.jpg">
+        <h2>{{event.eventName}}</h2>
+        <p>{{event.category}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

@@ -3,11 +3,15 @@
     <h3 id="eventDetails-heading1" style="color:#000000;">Event Name: {{eventDetails.eventName}}</h3>
     <ion-list id="eventDetails-list9">
       <ion-item id="eventDetails-list-item15">Category: {{eventDetails.category}}</ion-item>
-      <ion-item id="eventDetails-list-item16">Description: {{eventDetails.description}}</ion-item>
-      <ion-item id="eventDetails-list-item12">Date: {{eventDetails.date}}</ion-item>
+      <ion-item id="eventDetails-list-item16" class="item-text-wrap">Description: {{eventDetails.description}}</ion-item>
+      <ion-item id="eventDetails-list-item12">Date: {{eventDetails.date|date: 'dd MMMM yyyy'}}</ion-item>
       <ion-item id="eventDetails-list-item14">Time: {{eventDetails.time}}</ion-item>
       <ion-item id="eventDetails-list-item13">Address: {{eventDetails.address}}</ion-item>
       <ion-item id="eventDetails-list-item9">Location: {{eventDetails.location}}</ion-item>
     </ion-list>
+    <div id="eventDetails-button-bar1" class="button-bar">
+      <button id="eventDetails-button14" style="border-radius:-19px -19px -19px -19px;" class="button button-positive icon-left ion-android-share-alt">Share on Facebook</button>
+    </div>
+    <button id="eventDetails-button10" ng-click="rsvp()" class="button button-positive button-block">RSVP</button>
   </ion-content>
 </ion-view>
